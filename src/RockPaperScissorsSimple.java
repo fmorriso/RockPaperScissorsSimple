@@ -1,7 +1,6 @@
 /*
 This code is available online at:
-
-https://github.com/fmorriso/RockPaperScissorsSimple
+https://github.com/fmorriso/RockPaperScissorsSimple/blob/master/src/RockPaperScissorsSimple.java
 */
 
 import java.util.Scanner;
