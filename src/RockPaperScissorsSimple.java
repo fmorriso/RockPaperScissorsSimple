@@ -1,3 +1,9 @@
+/*
+This code is available online at:
+
+https://github.com/fmorriso/RockPaperScissorsSimple
+*/
+
 import java.util.Scanner;
 
 public class RockPaperScissorsSimple
