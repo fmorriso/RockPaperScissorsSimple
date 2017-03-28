@@ -12,7 +12,7 @@ public class RockPaperScissorsSimple
 
         while(keepPlaying)
         {
-            playTheGame();
+            playTheGameOneTime();
             gamesPlayed++;
             keepPlaying = askToPlayAgain();
         }
@@ -20,9 +20,9 @@ public class RockPaperScissorsSimple
         System.out.format("Game was played %d times%n", gamesPlayed);
     }
 
-    private static void playTheGame()
+    private static void playTheGameOneTime()
     {
-        // logic to play one round of the game goes here
+        // logic to play the game one time goes here
     }
 
     private static boolean askToPlayAgain()
