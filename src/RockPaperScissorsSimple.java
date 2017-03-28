@@ -27,7 +27,7 @@ public class RockPaperScissorsSimple
 
     private static boolean askToPlayAgain()
     {
-        System.out.print("Do you want to pay again (y/n)? (default is y)>");
+        System.out.print("Do you want to play again (y/n)? (default is y)>");
         String response = ask.nextLine();
         // if we got any kind of response and it begins with N or n,
         // interpret that to mean the user does not wish to play again.
