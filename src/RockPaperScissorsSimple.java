@@ -2,27 +2,160 @@ import java.util.Scanner;
 
 public class RockPaperScissorsSimple
 {
-
     private static final Scanner ask = new Scanner(System.in);
+    private static int playerScore = 0;
+    private static int computerScore = 0;
+    private static final int winningScore = 2;
+    private static int gamesPlayed = 0;
 
     public static void main(String[] args)
     {
         boolean keepPlaying = true;
-        int gamesPlayed = 0;
+        boolean haveWinner = false;
 
         while(keepPlaying)
         {
-            playTheGame();
+            haveWinner = playTheGame();
             gamesPlayed++;
-            keepPlaying = askToPlayAgain();
+            if(haveWinner)
+            {
+                System.out.format("It took %d tries to get a winner %n", gamesPlayed);
+                resetGame();
+                keepPlaying = askToPlayAgain();
+            }
         }
-
-        System.out.format("Game was played %d times%n", gamesPlayed);
     }
 
-    private static void playTheGame()
+    private static void resetGame()
     {
-        // logic to play one round of the game goes here
+        playerScore = 0;
+        computerScore = 0;
+        gamesPlayed = 0;
+    }
+
+    // logic to play one round of the game goes here
+    private static boolean playTheGame()
+    {
+        HandChoice computerChoice = getComputerChoice();
+        HandChoice playerChoice = getPlayerChoice();
+        System.out.format("Player chose %s, Computer chose %s %n", playerChoice, computerChoice);
+
+        GameOutcome outcome = CompareChoices(computerChoice, playerChoice);
+        switch(outcome)
+        {
+            case PlayerWins:
+                System.out.println("Player wins a point");
+                playerScore++;
+                break;
+
+            case ComputerWins:
+                System.out.println("Computer wins a point");
+                computerScore++;
+                break;
+
+            case Tie:
+                System.out.println("Another sister-kissing tie!!");
+                break;
+        }
+        System.out.format("Player: %d, Computer: %d %n", playerScore, computerScore);
+
+        if(playerScore == winningScore)
+        {
+            System.out.println("Player is the game winner");
+            return true;
+        }
+
+        if(computerScore == winningScore)
+        {
+            System.out.println("Computer is the game winner");
+            return true;
+        }
+        return false;
+    }
+
+    private static GameOutcome CompareChoices(HandChoice computerChoice, HandChoice playerChoice)
+    {
+        switch(computerChoice){
+
+            case Rock:
+
+                switch(playerChoice)
+                {
+                    case Rock:
+                        return GameOutcome.Tie;
+
+                    case Paper:
+                        System.out.println("Paper covers rock");
+                        return GameOutcome.PlayerWins;
+
+                    case Scissors:
+                        System.out.println("Rock smashes scissors");
+                        return GameOutcome.ComputerWins;
+                }
+                break;
+
+            case Paper:
+
+                switch(playerChoice)
+                {
+                    case Rock:
+                        System.out.println("Paper covers rock");
+                        return GameOutcome.ComputerWins;
+
+                    case Paper:
+                        return GameOutcome.Tie;
+
+                    case Scissors:
+                        System.out.println("Scissors cut paper");
+                        return GameOutcome.PlayerWins;
+                }
+                break;
+
+            case Scissors:
+
+                switch(playerChoice)
+                {
+                    case Rock:
+                        System.out.println("Rock smashes scissors");
+                        return GameOutcome.PlayerWins;
+
+                    case Paper:
+                        System.out.println("Scissors cut paper");
+                        return GameOutcome.ComputerWins;
+
+                    case Scissors:
+                        return GameOutcome.Tie;
+
+                }
+                break;
+        }
+        return GameOutcome.Tie;
+    }
+
+    private static HandChoice getComputerChoice()
+    {
+        int i = (int)(Math.random() * HandChoice.values().length) + 1;
+        //System.out.println(i);
+        switch (i){
+            case 1: return HandChoice.Rock;
+            case 2: return HandChoice.Paper;
+            case 3: return HandChoice.Scissors;
+            default: throw new ArrayIndexOutOfBoundsException("Computer made a bad choice");
+        }
+    }
+
+    // ask the player to make a choice
+    private static HandChoice getPlayerChoice()
+    {
+        HandChoice hc;
+        System.out.print("(R)ock, (P)aper, or (S)cissors?>");
+        String response = ask.nextLine();
+        if (response.length() > 0)
+        {
+            hc = HandChoice.getEnumFromFirstLetter(response);
+            return hc;
+        }
+        return null;
     }
 
     private static boolean askToPlayAgain()
