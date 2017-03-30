@@ -1,3 +1,6 @@
+// The set of allowable hand choices.
+// Includes the ability to get the hand choice based on a single letter
+// that corresponds to the first letter of the choice (case-insensitive).
 public enum HandChoice
 {
     Rock,
@@ -23,6 +26,6 @@ public enum HandChoice
             }
         }
 
-        throw new IllegalArgumentException("No Enum specified for this string");
+        throw new IllegalArgumentException("No Enum corresponds to the specified string");
     }
 }
