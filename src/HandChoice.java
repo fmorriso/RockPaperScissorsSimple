@@ -17,15 +17,22 @@ public enum HandChoice
         if(fullChoice.length() > 0)
         {
             String firstLetter = fullChoice.substring(0, 1);
-            if(RockFirst.equalsIgnoreCase(firstLetter)){
+
+            if(RockFirst.equalsIgnoreCase(firstLetter))
                 return Rock;
-            }else if(PaperFirst.equalsIgnoreCase(firstLetter)){
+            else if(PaperFirst.equalsIgnoreCase(firstLetter))
                 return Paper;
-            }else if(ScissorsFirst.equalsIgnoreCase(firstLetter)) {
+            else if(ScissorsFirst.equalsIgnoreCase(firstLetter))
                 return Scissors;
+            else
+            {
+                System.out.println("The first letter of the choice does not match any of the enum names - try again");
+                return null;
             }
+
         }
 
-        throw new IllegalArgumentException("No Enum corresponds to the specified string");
+        System.out.println("Empty choice encountered - please try again");
+        return null;
     }
 }

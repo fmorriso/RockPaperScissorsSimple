@@ -146,15 +146,16 @@ public class RockPaperScissorsSimple
     // ask the player to make a choice
     private static HandChoice getPlayerChoice()
     {
-        HandChoice hc;
-        System.out.print("(R)ock, (P)aper, or (S)cissors?>");
-        String response = ask.nextLine();
-        if (response.length() > 0)
+        HandChoice hc = null;
+
+        // keep asking player for a choice until we get a valid one
+        while(hc == null)
         {
+            System.out.print("(R)ock, (P)aper, or (S)cissors?>");
+            String response = ask.nextLine();
             hc = HandChoice.getEnumFromFirstLetter(response);
-            return hc;
         }
-        return null;
+        return hc;
     }
 
     private static boolean askToPlayAgain()
