@@ -26,7 +26,7 @@ public enum HandChoice
                 return Scissors;
             else
             {
-                System.out.println("The first letter of the choice does not match any of the enum names - try again");
+                System.out.println("The first letter of the choice does not match any of the allowable choices - try again");
                 return null;
             }
 
