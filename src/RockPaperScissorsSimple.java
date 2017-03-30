@@ -10,10 +10,10 @@ public class RockPaperScissorsSimple
 
     public static void main(String[] args)
     {
-        boolean keepPlaying = true;
+        boolean continuePlaying = true;
         boolean haveWinner = false;
 
-        while(keepPlaying)
+        while(continuePlaying)
         {
             haveWinner = playTheGame();
             gamesPlayed++;
@@ -21,11 +21,12 @@ public class RockPaperScissorsSimple
             {
                 System.out.format("It took %d tries to get a winner %n", gamesPlayed);
                 resetGame();
-                keepPlaying = askToPlayAgain();
+                continuePlaying = askToPlayAgain();
             }
         }
     }
 
+    // reset the game so we can play again
     private static void resetGame()
     {
         playerScore = 0;
@@ -33,7 +34,8 @@ public class RockPaperScissorsSimple
         gamesPlayed = 0;
     }
 
-    // logic to play one round of the game goes here
+    // logic to play one round of the game.
+    // Returns true if there was a winner
     private static boolean playTheGame()
     {
         HandChoice computerChoice = getComputerChoice();
@@ -57,7 +59,8 @@ public class RockPaperScissorsSimple
                 System.out.println("Another sister-kissing tie!!");
                 break;
         }
-        System.out.format("Player: %d, Computer: %d %n", playerScore, computerScore);
+
+        System.out.format("Score: Player: %d, Computer: %d %n", playerScore, computerScore);
 
         if(playerScore == winningScore)
         {
@@ -70,9 +73,11 @@ public class RockPaperScissorsSimple
             System.out.println("Computer is the game winner");
             return true;
         }
+
         return false;
     }
 
+    // Compare the computer's choice to the player's choice and return an outcome.
     private static GameOutcome CompareChoices(HandChoice computerChoice, HandChoice playerChoice)
     {
         switch(computerChoice){
@@ -134,14 +139,8 @@ public class RockPaperScissorsSimple
 
     private static HandChoice getComputerChoice()
     {
-        int i = (int)(Math.random() * HandChoice.values().length) + 1;
-        //System.out.println(i);
-        switch (i){
-            case 1: return HandChoice.Rock;
-            case 2: return HandChoice.Paper;
-            case 3: return HandChoice.Scissors;
-            default: throw new ArrayIndexOutOfBoundsException("Computer made a bad choice");
-        }
+        int i = (int)(Math.random() * HandChoice.values().length);
+        return HandChoice.values()[i];
     }
 
     // ask the player to make a choice
