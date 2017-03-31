@@ -8,7 +8,7 @@ public class RockPaperScissorsSimple
     private static final int winningScore = 2;
     private static int gamesPlayed = 0;
 
-    public static void main(String[] args)
+    public static void main( String[] args )
     {
         boolean continuePlaying = true;
         boolean haveWinner = false;
@@ -19,7 +19,7 @@ public class RockPaperScissorsSimple
             gamesPlayed++;
             if(haveWinner)
             {
-                System.out.format("It took %d tries to get a winner %n", gamesPlayed);
+                System.out.format("It took %d tries to determine a winner %n", gamesPlayed);
                 resetGame();
                 continuePlaying = askToPlayAgain();
             }
@@ -151,16 +151,16 @@ public class RockPaperScissorsSimple
         // keep asking player for a choice until we get a valid one
         while(hc == null)
         {
-            System.out.print("(R)ock, (P)aper, or (S)cissors?>");
+            System.out.println("(R)ock, (P)aper, or (S)cissors?");
             String response = ask.nextLine();
-            hc = HandChoice.getEnumFromFirstLetter(response);
+            hc = HandChoice.getChoiceFromFirstLetter(response);
         }
         return hc;
     }
 
     private static boolean askToPlayAgain()
     {
-        System.out.print("Do you want to play again (y/n)? (default is y)>");
+        System.out.println("Do you want to play again (y/n)? (default is y)");
         String response = ask.nextLine();
         // if we got any kind of response and it begins with N or n,
         // interpret that to mean the user does not wish to play again.

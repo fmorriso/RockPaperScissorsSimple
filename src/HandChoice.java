@@ -12,7 +12,7 @@ public enum HandChoice
     private static final String ScissorsFirst = Scissors.name().substring(0, 1);
 
     // returns the enum based on just the first character of the input value
-    public static HandChoice getEnumFromFirstLetter(String fullChoice)
+    public static HandChoice getChoiceFromFirstLetter(String fullChoice)
     {
         if(fullChoice.length() > 0)
         {
