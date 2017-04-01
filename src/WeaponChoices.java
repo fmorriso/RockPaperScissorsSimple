@@ -1,6 +1,8 @@
-// The set of allowable hand choices.
-// Includes the ability to get the hand choice based on a single letter
+// The set of allowable weapon choices.
+// Includes:
+// 1. the ability to get the weapon choice based on a single letter
 // that corresponds to the first letter of the choice (case-insensitive).
+// 2. the ability to get the full weapon name from the underlying integer
 public class WeaponChoices
 {
     public static final int Rock = 1;
@@ -9,12 +11,14 @@ public class WeaponChoices
 
     public static final int TotalAvailableWeaponChoices = 3;
 
-    public static final String PromptForWeaponChoice = "(R)ock, (P)aper, or (S)cissors?";
+    public static final String PromptForChoice = "(R)ock, (P)aper, or (S)cissors?";
 
     // Returns the name that corresponds to the specified integer choice
+    // or unknown if the input value does not correspond to a known weapon.
     public static String getWeaponName(int choice)
     {
         String nameOfChoice = "unknown";
+
         switch(choice)
         {
             case Rock:

@@ -151,7 +151,7 @@ public class RockPaperScissorsSimple
         // keep asking player for a choice until we get a valid one
         while(hc <= 0)
         {
-            System.out.println(WeaponChoices.PromptForWeaponChoice);
+            System.out.println(WeaponChoices.PromptForChoice);
             String response = ask.nextLine();
             hc = WeaponChoices.getWeaponChoiceFromFirstLetter(response);
         }
