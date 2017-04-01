@@ -1,38 +1,59 @@
 // The set of allowable hand choices.
 // Includes the ability to get the hand choice based on a single letter
 // that corresponds to the first letter of the choice (case-insensitive).
-public enum HandChoice
+public class HandChoice
 {
-    Rock,
-    Paper,
-    Scissors;
+    public static final int Rock = 1;
+    public static final int Paper = 2;
+    public static final int Scissors = 3;
 
-    private static final String RockFirst = Rock.name().substring(0, 1);
-    private static final String PaperFirst = Paper.name().substring(0, 1);
-    private static final String ScissorsFirst = Scissors.name().substring(0, 1);
+    public static final int TotalAvailableChoices = 3;
 
-    // returns the enum based on just the first character of the input value
-    public static HandChoice getChoiceFromFirstLetter(String fullChoice)
+    // Returns the name that corresponds to the specified integer choice
+    public static String getName(int choice)
     {
-        if(fullChoice.length() > 0)
+        String nameOfChoice = "unknown";
+        switch(choice)
         {
-            String firstLetter = fullChoice.substring(0, 1);
+            case Rock:
+                nameOfChoice = "Rock";
+                break;
 
-            if(RockFirst.equalsIgnoreCase(firstLetter))
-                return Rock;
-            else if(PaperFirst.equalsIgnoreCase(firstLetter))
-                return Paper;
-            else if(ScissorsFirst.equalsIgnoreCase(firstLetter))
-                return Scissors;
-            else
-            {
-                System.out.println("The first letter of the choice does not match any of the allowable choices - try again");
-                return null;
-            }
+            case Paper:
+                nameOfChoice = "Paper";
+                break;
 
+            case Scissors:
+                nameOfChoice = "Scissors";
+                break;
         }
 
-        System.out.println("Empty choice encountered - please try again");
-        return null;
+        return nameOfChoice;
     }
+
+    // returns the integer choice based on the first letter of the input String.
+    // If the value of the integer is out of range, we return zero.
+    public static int getChoiceFromFirstLetter(String fullChoice)
+    {
+        int choice = 0;
+        if(fullChoice.length() > 0)
+        {
+            String firstLetter = fullChoice.substring(0, 1).toLowerCase();
+            switch (firstLetter)
+            {
+                case "r":
+                    return Rock;
+
+                case "p":
+                    return Paper;
+
+                case "s":
+                    return Scissors;
+
+            }
+        }
+
+        return choice;
+    }
+
 }
