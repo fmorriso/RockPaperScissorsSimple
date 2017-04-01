@@ -9,6 +9,8 @@ public class WeaponChoices
 
     public static final int TotalAvailableWeaponChoices = 3;
 
+    public static final String PromptForWeaponChoice = "(R)ock, (P)aper, or (S)cissors?";
+
     // Returns the name that corresponds to the specified integer choice
     public static String getWeaponName(int choice)
     {
