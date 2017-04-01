@@ -3,7 +3,7 @@
 // 1. the ability to get the weapon choice based on a single letter
 // that corresponds to the first letter of the choice (case-insensitive).
 // 2. the ability to get the full weapon name from the underlying integer
-public class WeaponChoices
+public class Weapons
 {
     public static final int Rock = 1;
     public static final int Paper = 2;
@@ -39,7 +39,7 @@ public class WeaponChoices
 
     // returns the integer choice based on the first letter of the input String.
     // If the value of the integer is out of range, we return zero.
-    public static int getWeaponChoiceFromFirstLetter(String fullChoice)
+    public static int getChoiceFromFirstLetter(String fullChoice)
     {
         int choice = 0;
         if(fullChoice.length() > 0)
