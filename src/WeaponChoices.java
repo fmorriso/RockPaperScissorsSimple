@@ -1,16 +1,16 @@
 // The set of allowable hand choices.
 // Includes the ability to get the hand choice based on a single letter
 // that corresponds to the first letter of the choice (case-insensitive).
-public class HandChoice
+public class WeaponChoices
 {
     public static final int Rock = 1;
     public static final int Paper = 2;
     public static final int Scissors = 3;
 
-    public static final int TotalAvailableChoices = 3;
+    public static final int TotalAvailableWeaponChoices = 3;
 
     // Returns the name that corresponds to the specified integer choice
-    public static String getName(int choice)
+    public static String getWeaponName(int choice)
     {
         String nameOfChoice = "unknown";
         switch(choice)
@@ -33,7 +33,7 @@ public class HandChoice
 
     // returns the integer choice based on the first letter of the input String.
     // If the value of the integer is out of range, we return zero.
-    public static int getChoiceFromFirstLetter(String fullChoice)
+    public static int getWeaponChoiceFromFirstLetter(String fullChoice)
     {
         int choice = 0;
         if(fullChoice.length() > 0)
