@@ -3,7 +3,7 @@
 // 1. the ability to get the weapon choice based on a single letter
 // that corresponds to the first letter of the choice (case-insensitive).
 // 2. the ability to get the full weapon name from the underlying integer
-public class Weapons
+public class Weapon
 {
     public static final int Rock = 1;
     public static final int Paper = 2;

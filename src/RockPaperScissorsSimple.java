@@ -40,7 +40,7 @@ public class RockPaperScissorsSimple
     {
         int computerChoice = getComputerChoice();
         int playerChoice = getPlayerChoice();
-        System.out.format("Player chose %s, Computer chose %s %n", Weapons.getWeaponName(playerChoice), Weapons.getWeaponName(computerChoice) );
+        System.out.format("Player chose %s, Computer chose %s %n", Weapon.getWeaponName(playerChoice), Weapon.getWeaponName(computerChoice) );
 
         GameOutcome outcome = CompareChoices(computerChoice, playerChoice);
         switch(outcome)
@@ -82,53 +82,53 @@ public class RockPaperScissorsSimple
     {
         switch(computerChoice){
 
-            case Weapons.Rock:
+            case Weapon.Rock:
 
                 switch(playerChoice)
                 {
-                    case Weapons.Rock:
+                    case Weapon.Rock:
                         return GameOutcome.Tie;
 
-                    case Weapons.Paper:
+                    case Weapon.Paper:
                         System.out.println("Paper covers rock");
                         return GameOutcome.PlayerWins;
 
-                    case Weapons.Scissors:
+                    case Weapon.Scissors:
                         System.out.println("Rock smashes scissors");
                         return GameOutcome.ComputerWins;
                 }
                 break;
 
-            case Weapons.Paper:
+            case Weapon.Paper:
 
                 switch(playerChoice)
                 {
-                    case Weapons.Rock:
+                    case Weapon.Rock:
                         System.out.println("Paper covers rock");
                         return GameOutcome.ComputerWins;
 
-                    case Weapons.Paper:
+                    case Weapon.Paper:
                         return GameOutcome.Tie;
 
-                    case Weapons.Scissors:
+                    case Weapon.Scissors:
                         System.out.println("Scissors cut paper");
                         return GameOutcome.PlayerWins;
                 }
                 break;
 
-            case Weapons.Scissors:
+            case Weapon.Scissors:
 
                 switch(playerChoice)
                 {
-                    case Weapons.Rock:
+                    case Weapon.Rock:
                         System.out.println("Rock smashes scissors");
                         return GameOutcome.PlayerWins;
 
-                    case Weapons.Paper:
+                    case Weapon.Paper:
                         System.out.println("Scissors cut paper");
                         return GameOutcome.ComputerWins;
 
-                    case Weapons.Scissors:
+                    case Weapon.Scissors:
                         return GameOutcome.Tie;
 
                 }
@@ -139,7 +139,7 @@ public class RockPaperScissorsSimple
 
     private static int getComputerChoice()
     {
-        int i = (int)(Math.random() * Weapons.TotalAvailableWeaponChoices) + 1;
+        int i = (int)(Math.random() * Weapon.TotalAvailableWeaponChoices) + 1;
         return i;
     }
 
@@ -151,9 +151,9 @@ public class RockPaperScissorsSimple
         // keep asking player for a choice until we get a valid one
         while(hc <= 0)
         {
-            System.out.println(Weapons.PromptForChoice);
+            System.out.println(Weapon.PromptForChoice);
             String response = ask.nextLine();
-            hc = Weapons.getChoiceFromFirstLetter(response);
+            hc = Weapon.getChoiceFromFirstLetter(response);
         }
         return hc;
     }
