@@ -23,7 +23,7 @@ public class Weapon
     // or unknown if the input value does not correspond to a known weapon.
     public static String getWeaponName(int choice)
     {
-        String nameOfChoice = "unknown";
+        String nameOfChoice;
 
         switch(choice)
         {
@@ -38,6 +38,9 @@ public class Weapon
             case Scissors:
                 nameOfChoice = "Scissors";
                 break;
+
+            default:
+                nameOfChoice = "Unexpected";
         }
 
         return nameOfChoice;
