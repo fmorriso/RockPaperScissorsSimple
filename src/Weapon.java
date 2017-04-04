@@ -65,6 +65,9 @@ public class Weapon
                 case "s":
                     return Scissors;
 
+                default:
+                    return 0;
+
             }
         }
 
