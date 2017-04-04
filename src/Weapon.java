@@ -76,16 +76,16 @@ public class Weapon
 
     public static int askWhichWeapon()
     {
-        int hc = 0;
+        int weaponChoice = 0;
 
         // keep asking player for a choice until we get a valid one
-        while(hc <= 0)
+        while(weaponChoice <= 0)
         {
             System.out.println(PromptForChoice);
             String response = ask.nextLine();
-            hc = getChoiceFromFirstLetter(response);
+            weaponChoice = getChoiceFromFirstLetter(response);
         }
-        return hc;
+        return weaponChoice;
     }
 
     public static GameOutcome CompareChoices(int computerChoice, int playerChoice)
