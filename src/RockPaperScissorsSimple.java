@@ -26,7 +26,7 @@ public class RockPaperScissorsSimple
                 continuePlaying = askToPlayAgain();
             }
         }
-        System.out.format("Final results: Player won %d times, computer won %d times %n", gamesWonByPlayer, gamesWonByComputer);
+        System.out.format("Player won %d times, computer won %d times %n", gamesWonByPlayer, gamesWonByComputer);
         
     }
 
