@@ -7,6 +7,8 @@ public class RockPaperScissorsSimple
     private static int computerScore = 0;
     private static final int winningScore = 2;
     private static int gamesPlayed = 0;
+    private static int gamesWonByPlayer = 0;
+    private static int gamesWonByComputer = 0;
 
     public static void main( String[] args )
     {
@@ -24,6 +26,8 @@ public class RockPaperScissorsSimple
                 continuePlaying = askToPlayAgain();
             }
         }
+        System.out.format("Player won %d times, computer won %d times %n", gamesWonByPlayer, gamesWonByComputer);
+        
     }
 
     // reset the game so we can play again
@@ -65,12 +69,14 @@ public class RockPaperScissorsSimple
         if(playerScore == winningScore)
         {
             System.out.println("Player is the game winner");
+            gamesWonByPlayer++;
             return true;
         }
 
         if(computerScore == winningScore)
         {
             System.out.println("Computer is the game winner");
+            gamesWonByComputer++;
             return true;
         }
 
