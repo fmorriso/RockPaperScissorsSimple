@@ -20,7 +20,7 @@ public class RockPaperScissorsSimple
          haveWinner = playTheGame();
          if(haveWinner)
          {
-            System.out.format("It took %d tries to determine a winner. %n", attemptsToDetermineWinner);
+            System.out.format("It took %d attempts to determine a winner. %n", attemptsToDetermineWinner);
             resetGame();
             continuePlaying = askToPlayAgain();
          }
